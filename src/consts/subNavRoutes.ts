@@ -1,18 +1,22 @@
 import { ROUTES } from "../config/consts";
 
-export const SUBNAV_ROUTES = [
+export const SUBNAV_SVE = [
     {
         label: 'Sve',
         link: ROUTES.sve
+    },
+]
+
+export const SUBNAV_ROUTES = [
+    {
+        label: 'Danas',
+        link: ROUTES.danas,
     },
     {
         label: '3 dana',
         link: ROUTES.triDana
     },
-    {
-        label: 'Danas',
-        link: ROUTES.danas,
-    },
+
     {
         label: 'Uskoro',
         link: ROUTES.uskoro

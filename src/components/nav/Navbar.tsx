@@ -1,9 +1,9 @@
 import React from 'react';
 import DesktopNav from '../../feature/navbar/DesktopNav';
 import MobileNav from '../../feature/navbar/MobileNav';
-import KladenjeUzivoSubNav from './KladenjeUzivoSubNav';
-import SportskoKladjenjeSubNav from './SportskoKladjenjeSubNav';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import KladenjeUzivoSubNav from './subNav/KladenjeUzivoSubNav';
+import SportskoKladjenjeSubNav from './subNav/SportskoKladjenjeSubNav';
+import { useAppSelector } from '../../redux/hooks';
 
 const Navbar = () => {
 

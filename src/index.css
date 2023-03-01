@@ -26,7 +26,7 @@
 }
 
 .decimalni-submenu {
-    @apply absolute top-[28px] left-[-150px] md:left-[-100px] w-[180px] h-[130px] bg-[#3c3c3c];
+    @apply z-50 absolute top-[28px] left-[-125px] md:left-[-100px] w-[180px] h-[130px] bg-[#3c3c3c];
 }
 
 .decimalni-submenu-li {
@@ -38,7 +38,7 @@
 }
 
 .mobile-dropdown-icon {
-    @apply w-[19px] h-[19px] mr-[10px] opacity-30;
+    @apply w-[19px] h-[19px] mx-[14px];
 }
 
 .mobile-dropdown-link {
@@ -62,7 +62,7 @@
 }
 
 .sub-nav-li {
-    @apply min-w-[76px] h-[46px] flex-center hover:bg-[#3f4144] hover:cursor-pointer;
+    @apply min-w-[76px] text-[14px] md:text-[16px] flex-center bg-[#2c2e30] hover:bg-[#3f4144] hover:cursor-pointer;
 }
 
 .sub-nav-active {
