@@ -6,9 +6,13 @@ import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
 import SubNavTicketOpener from './SubNavTicketOpener';
+import { useAppDispatch } from '../../../redux/hooks';
+import { selectedStateFalse } from '../../../redux/selected';
 
 
 const SubNav: FC = () => {
+
+    const dispatch = useAppDispatch();
 
     return (
         <>
@@ -23,6 +27,7 @@ const SubNav: FC = () => {
                                     <NavLink
                                         to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                                         key={route.label}
+                                        onClick={() => dispatch(selectedStateFalse())}
                                         className={({ isActive }) =>
                                             `${isActive ? 'sub-nav-active' : ''} sub-nav-li h-[46px] border-b-[2px] text-[#e6e6e6] border-[#525558]`}
                                     >

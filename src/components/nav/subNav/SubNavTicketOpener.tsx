@@ -9,7 +9,7 @@ const SubNavTicketOpener = () => {
     return (
         <div
             onClick={() => dispatch(setTicket())}
-            className='bg-[#525455] rounded-sm w-[100px] flex-center md:hidden'
+            className='bg-[#525455] rounded-sm w-[100px] flex-center lg:hidden'
         >
             <span className='text-white'>Betslip</span>
         </div>

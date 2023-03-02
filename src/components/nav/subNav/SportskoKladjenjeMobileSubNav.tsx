@@ -3,36 +3,68 @@ import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../../config/consts';
 import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { selectedStateTrue } from '../../../redux/selected';
 
-const SportskoKladjenjeMobileSubNav = () => {
+const SportskoKladjenjeMobileSubNav: FC = () => {
 
-    const [isModalOpen, setModalOpen] = useState(false);
+    const { selectedState } = useAppSelector((state) => state.isSelected)
+    const dispatch = useAppDispatch();
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedDateRange, setSelectedDateRange] = useState('')
+
 
     const submenuToggle = () => {
-        setModalOpen((currState) => !currState)
+        setIsDropdownOpen((currState) => !currState)
     }
 
-    return (
-        <div
-            onClick={() => submenuToggle()}
-            className='relative w-[100px] px-[16px] flex items-center bg-[#2c2e30] border-b-[2px] border-[#525558] lg:hidden'
-        >
-            <div>
-                <span className='text-white'>Vise</span>
-            </div>
+    const handleSelectedDate = (label: string) => {
+        setSelectedDateRange(label)
+        setIsDropdownOpen(false)
+        dispatch(selectedStateTrue())
+    }
 
-            <ul className={`text-[#e6e6e6] text-left absolute top-[46px] left-[0] flex flex-col items-center ${isModalOpen ? "opacity-1 transform duration-300" : "opacity-0 transform duration-200"}`}>
-                {SUBNAV_ROUTES.map((route) => (
-                    <NavLink
-                        to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
-                        key={route.label}
-                        className={({ isActive }) =>
-                            `${isActive ? 'bg-[#525558]' : ''} bg-[#2c2e30] px-[16px] flex items-center w-[100px] h-[46px] border-b-[1px] border-[#525558]`}
-                    >
-                        {route.label}
-                    </NavLink>
-                ))}
-            </ul>
+
+    return (
+        <div className={`relative flex items-center bg-[#2c2e30] ${selectedState ? 'border-b-[2px] border-[#ffbb1a] text-[#ffbb1a] bg-[#3f4144]' : 'text-[white] border-b-[2px] border-[#525558]'} lg:hidden`}>
+
+            {selectedState ?
+                <div
+                    onClick={() => submenuToggle()}
+                    className='w-[100px] h-[46px] flex items-center justify-between px-[16px]'>
+                    {selectedDateRange}
+                    <img
+                        src="/images/arrow-down-white.png"
+                        className={`w-[12px] h-[12px] ${isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'}`}
+                    ></img>
+                </div>
+                :
+                <div
+                    onClick={() => submenuToggle()}
+                    className='w-[100px] h-[46px] flex items-center justify-between px-[16px]'>
+                    Vise
+                    <img
+                        src="/images/arrow-down-white.png"
+                        className={`w-[12px] h-[12px] ${isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'}`}
+                    ></img>
+                </div>}
+
+            {isDropdownOpen &&
+                <ul className={`absolute top-[46px] left-0 text-[#e6e6e6] text-left flex flex-col items-center`}>
+                    {SUBNAV_ROUTES.map((route) => (
+                        <NavLink
+                            to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
+                            key={route.label}
+                            onClick={() => handleSelectedDate(route.label)}
+                            className={({ isActive }) =>
+                                `${isActive ? 'bg-[#525558]' : ''} bg-[#2c2e30] px-[16px] flex items-center w-[100px] h-[46px] border-b-[1px] border-[#525558]`}
+                        >
+                            <p>{route.label}</p>
+                        </NavLink>
+                    ))}
+                </ul>}
+
         </div>
     );
 }
