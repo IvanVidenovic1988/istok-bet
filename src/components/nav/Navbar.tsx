@@ -8,7 +8,6 @@ import { useAppSelector } from '../../redux/hooks';
 const Navbar = () => {
 
     const { navigationState } = useAppSelector((state) => state.navigation)
-    // const dispatch = useAppDispatch();
 
     console.log("navigationState: ", navigationState)
     return (

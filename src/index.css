@@ -49,11 +49,11 @@
     @apply h-[25px] px-[20px] text-[12px] rounded-sm;
 }
 
-.mobileDropdownPassive {
+.mobile-dropdown-inactive {
     @apply transform translate-x-[-280px] duration-200 ease-linear;
 }
 
-.mobileDropdownActive {
+.mobile-dropdown-active {
     @apply transform translate-x-[0px] duration-200 ease-linear;
 }
 

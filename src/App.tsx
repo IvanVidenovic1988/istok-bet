@@ -14,8 +14,7 @@ import Register from './pages/Register/Register';
 import Navbar from './components/nav/Navbar';
 import Topbar from './components/nav/Topbar';
 import Sve from './pages/SportskoKladjenje/Sve';
-import DesktopNav from './feature/navbar/DesktopNav';
-import Pregled from './pages/KladnjenjeUzivo/Pregled';
+import { SUBNAV_ROUTES } from './consts/subNavRoutes';
 
 
 function App() {
@@ -34,23 +33,18 @@ function App() {
 
           <Route path={ROUTES.sportskoKladjenje}>
             <Route index element={<Navigate to={ROUTES.sve} />} />
+
             <Route path={ROUTES.sve} element={<Sve />} />
-            <Route path={ROUTES.triDana} element={<Sve />} />
-            <Route path={ROUTES.danas} element={<Pregled />} />
-            <Route path={ROUTES.uskoro} element={<Sve />} />
-            <Route path={ROUTES.ponedeljak} element={<Sve />} />
-            <Route path={ROUTES.utorak} element={<Sve />} />
-            <Route path={ROUTES.sreda} element={<Sve />} />
-            <Route path={ROUTES.cetvrtak} element={<Sve />} />
-            <Route path={ROUTES.petak} element={<Sve />} />
-            <Route path={ROUTES.subota} element={<Sve />} />
-            <Route path={ROUTES.nedelja} element={<Sve />} />
+
+            {SUBNAV_ROUTES.map(({ label, link, Element }) => (
+              <Route key={label} path={link} element={<Element />} />
+            ))}
           </Route>
 
           <Route path={ROUTES.kladjenjeUzivo}>
             <Route index element={<Navigate to={ROUTES.pregled} />} />
-            <Route path={ROUTES.pregled} element={<Pregled />} />
-            <Route path={ROUTES.pregledDesavanja} element={<Pregled />} />
+            <Route path={ROUTES.pregled} element={<Sve />} />
+            <Route path={ROUTES.pregledDesavanja} element={<Sve />} />
           </Route>
 
           <Route path={ROUTES.virtuelneIgre} element={<VirtuelneIgre />} />

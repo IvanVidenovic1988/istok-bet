@@ -3,11 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import MobileNavDropdown from './mobileNavDropdown/MobileNavDropdown';
 
-// type Props = {
-//     dropdown: boolean;
-//     setDropdown: () => void;
-// }
-
 const Topbar: FC = () => {
 
     const navigate = useNavigate()
@@ -52,7 +47,7 @@ const Topbar: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`fixed top-0 h-[100%] w-[280px] bg-[#181818] z-50 ${dropdown ? "mobileDropdownActive" : "mobileDropdownPassive"}`}>
+            <div className={`fixed top-0 h-[100%] w-[280px] bg-[#181818] z-50 ${dropdown ? "mobile-dropdown-active" : "mobile-dropdown-inactive"}`}>
                 <MobileNavDropdown setDropdown={setDropdown} />
             </div>
         </>

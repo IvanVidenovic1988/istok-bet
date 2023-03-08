@@ -12,7 +12,7 @@ const SportskoKladjenjeDesktopSubNav: FC = () => {
                         to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                         key={route.label}
                         className={({ isActive }) =>
-                            `${isActive ? 'sub-nav-active' : ''} sub-nav-li border-b-[2px] h-[46px] border-[#525558]`}
+                            `${isActive ? 'sub-nav-active' : ''} sub-nav-li border-b-[2px] h-[46px] capitalize border-[#525558]`}
                     >
                         {route.label}
                     </NavLink>

@@ -14,7 +14,6 @@ const MobileNav = () => {
 
     const submenuToggle = () => {
         setModalOpen((currState) => !currState)
-        // setTicket(false)
     }
 
     return (
@@ -46,7 +45,7 @@ const MobileNav = () => {
                 </div>
             </div>
             <div className='relative'>
-                {ticketState && <Tiket />}
+                {/* {ticketState && <Tiket />} */}
             </div>
         </>
     );
