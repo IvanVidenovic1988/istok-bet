@@ -2,15 +2,6 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { ROUTES } from './config/consts';
 
-import BalkanKlub from './pages/BalkanKlub/BalkanKlub';
-import Blog from './pages/Blog/Blog';
-import Brojevi from './pages/Brojevi/Brojevi';
-import Home from './pages/home/Home';
-import IgreUzivo from './pages/IgreUzivo/IgreUzivo';
-import Promocije from './pages/Pomocije/Promocije';
-import SlotIgre from './pages/SlotIgre/SlotIgre';
-import VirtuelneIgre from './pages/VirtuelneIgre/VirtuelneIgre';
-import Register from './pages/Register/Register';
 import Navbar from './components/nav/Navbar';
 import Topbar from './components/nav/Topbar';
 import Sve from './pages/SportskoKladjenje/Sve';
@@ -29,8 +20,6 @@ function App() {
 
         <Routes>
 
-          <Route path={ROUTES.home} element={<Home />} />
-
           <Route path={ROUTES.sportskoKladjenje}>
             <Route index element={<Navigate to={ROUTES.sve} />} />
 
@@ -47,14 +36,14 @@ function App() {
             <Route path={ROUTES.pregledDesavanja} element={<Sve />} />
           </Route>
 
-          <Route path={ROUTES.virtuelneIgre} element={<VirtuelneIgre />} />
-          <Route path={ROUTES.slotIgre} element={<SlotIgre />} />
-          <Route path={ROUTES.igreUzivo} element={<IgreUzivo />} />
-          <Route path={ROUTES.brojevi} element={<Brojevi />} />
-          <Route path={ROUTES.promocije} element={<Promocije />} />
-          <Route path={ROUTES.blog} element={<Blog />} />
-          <Route path={ROUTES.balkanKlub} element={<BalkanKlub />} />
-          <Route path={ROUTES.register} element={<Register />} />
+          <Route path={ROUTES.virtuelneIgre} element={<Sve />} />
+          <Route path={ROUTES.slotIgre} element={<Sve />} />
+          <Route path={ROUTES.igreUzivo} element={<Sve />} />
+          <Route path={ROUTES.brojevi} element={<Sve />} />
+          <Route path={ROUTES.promocije} element={<Sve />} />
+          <Route path={ROUTES.blog} element={<Sve />} />
+          <Route path={ROUTES.balkanKlub} element={<Sve />} />
+          <Route path={ROUTES.register} element={<Sve />} />
 
         </Routes>
 
