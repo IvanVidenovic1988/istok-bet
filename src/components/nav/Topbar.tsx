@@ -47,7 +47,7 @@ const Topbar: FC = () => {
                     </div>
                 </div>
             </div>
-            <div className={`fixed top-0 h-[100%] w-[280px] bg-[#181818] z-50 ${dropdown ? "mobile-dropdown-active" : "mobile-dropdown-inactive"}`}>
+            <div className={`fixed top-0 h-[100%] w-[280px] bg-[#181818] z-50 ${dropdown ? "mobile-dropdown-active" : "mobile-dropdown-inactive"} md:hidden`}>
                 <MobileNavDropdown setDropdown={setDropdown} />
             </div>
         </>

@@ -10,8 +10,6 @@ export const SUBNAV_SVE = [
     },
 ]
 
-const today = moment().format("DD-MM-YYYY");
-
 const formatDate = (date = 0) => {
     if (date === 0) {
         return {
@@ -19,6 +17,7 @@ const formatDate = (date = 0) => {
             link: moment().format("DD-MM-YYYY")
         }
     }
+
     return {
         label: moment().add(date, 'day').locale('sr').format("ddd").replace('.', ''),
         link: moment().add(date, 'day').format("DD-MM-YYYY"),
@@ -40,44 +39,16 @@ export const SUBNAV_ROUTES = [
 
     {
         label: 'Uskoro',
-        link: `uskoro-${today}`,
+        link: `uskoro`,
         Element: Sve
     },
-    {
-        label: formatDate(1).label,
-        link: formatDate(1).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(2).label,
-        link: formatDate(2).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(3).label,
-        link: formatDate(3).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(4).label,
-        link: formatDate(4).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(5).label,
-        link: formatDate(5).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(6).label,
-        link: formatDate(6).link,
-        Element: Sve
-    },
-    {
-        label: formatDate(7).label,
-        link: formatDate(7).link,
-        Element: Sve
-    },
+    ...[1, 2, 3, 4, 5, 6, 7].map((n) => (
+        {
+            label: formatDate(n).label,
+            link: formatDate(n).link,
+            Element: Sve,
+        }
+    ))
 ]
 
 export const SUBNAV_ROUTES_UZIVO = [

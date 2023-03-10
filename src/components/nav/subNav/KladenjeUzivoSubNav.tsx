@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../../config/consts';
 import { SUBNAV_ROUTES_UZIVO } from '../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
-import SubNavTicketOpener from './SubNavTicketOpener';
 
 const SubNavUzivo = () => {
 
@@ -30,7 +29,6 @@ const SubNavUzivo = () => {
                         <SubNavSearch />
                     </div>
 
-                    <SubNavTicketOpener />
                 </div>
 
             </div>

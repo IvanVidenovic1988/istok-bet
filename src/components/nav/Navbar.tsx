@@ -9,7 +9,6 @@ const Navbar = () => {
 
     const { navigationState } = useAppSelector((state) => state.navigation)
 
-    console.log("navigationState: ", navigationState)
     return (
         <div>
             <DesktopNav />

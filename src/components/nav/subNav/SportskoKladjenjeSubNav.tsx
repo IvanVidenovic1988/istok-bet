@@ -5,7 +5,6 @@ import { SUBNAV_SVE } from '../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
-import SubNavTicketOpener from './SubNavTicketOpener';
 import { useAppDispatch } from '../../../redux/hooks';
 import { selectedStateFalse } from '../../../redux/selected';
 
@@ -58,8 +57,6 @@ const SubNav: FC = () => {
                         <SubNavSearch />
 
                     </div>
-
-                    <SubNavTicketOpener />
 
                 </div>
 
