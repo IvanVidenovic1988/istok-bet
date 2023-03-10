@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { ROUTES } from './config/consts';
 
-import Navbar from './components/nav/Navbar';
-import Topbar from './components/nav/Topbar';
+import Navbar from './feature/navbar/nav/Navbar';
+import Topbar from './feature/navbar/nav/Topbar';
 import Sve from './pages/SportskoKladjenje/Sve';
 import { SUBNAV_ROUTES } from './consts/subNavRoutes';
 

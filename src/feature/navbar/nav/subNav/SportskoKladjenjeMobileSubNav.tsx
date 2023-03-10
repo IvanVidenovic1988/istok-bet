@@ -1,11 +1,11 @@
 import React, { FC, useRef, useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../config/consts';
-import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { selectedStateTrue } from '../../../redux/selected';
+import { ROUTES } from '../../../../config/consts';
+import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
+import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
+import { selectedStateTrue } from '../../../../redux/selected';
 
 const SportskoKladjenjeMobileSubNav: FC = () => {
 
