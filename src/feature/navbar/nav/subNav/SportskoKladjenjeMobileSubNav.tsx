@@ -54,7 +54,8 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
 
             {isDropdownOpen &&
                 <ul ref={ref} className={`absolute top-[46px] left-0 text-[#e6e6e6] text-left flex flex-col items-center`}>
-                    {SUBNAV_ROUTES.map((route) => (
+
+                    {SUBNAV_ROUTES.slice(1).map((route) => (
                         <NavLink
                             to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                             key={route.label}

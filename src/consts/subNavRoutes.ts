@@ -3,14 +3,7 @@ import { ROUTES } from "../config/consts";
 import 'moment/locale/sr'
 import Sve from "../pages/SportskoKladjenje/Sve";
 
-export const SUBNAV_SVE = [
-    {
-        label: 'Sve',
-        link: ROUTES.sve
-    },
-]
-
-const formatDate = (date = 0) => {
+const formatDate = (date: number) => {
     if (date === 0) {
         return {
             label: 'Danas',
@@ -27,8 +20,13 @@ const formatDate = (date = 0) => {
 
 export const SUBNAV_ROUTES = [
     {
-        label: formatDate().label,
-        link: formatDate().link,
+        label: 'Sve',
+        link: ROUTES.sve,
+        Element: Sve
+    },
+    {
+        label: formatDate(0).label,
+        link: formatDate(0).link,
         Element: Sve
     },
     {

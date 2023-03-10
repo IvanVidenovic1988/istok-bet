@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ROUTES } from '../../../../config/consts';
-import { SUBNAV_SVE } from '../../../../consts/subNavRoutes';
+import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
@@ -19,9 +19,9 @@ const SubNav: FC = () => {
 
                 <div className='h-[46px] my-[10px] mr-[10px] bg-[#2c2e30] flex justify-between'>
 
-                    <div className='flex justify-between'>
+                    <div className='flex'>
                         <div>
-                            {SUBNAV_SVE.map((route) => (
+                            {SUBNAV_ROUTES.slice(0, 1).map((route) => (
                                 <NavLink
                                     to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                                     key={route.label}
