@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import navigationReducer from './navigation' // moz ga krstis kako oces
+import navigationReducer from './navigation'
 import isSelectedReducer from './selected'
 
 export default configureStore({
