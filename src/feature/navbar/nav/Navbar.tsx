@@ -1,6 +1,6 @@
 import React from 'react';
-import DesktopNav from '../../../feature/navbar/DesktopNav';
-import MobileNav from '../../../feature/navbar/MobileNav';
+import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav';
 import KladenjeUzivoSubNav from './subNav/KladenjeUzivoSubNav';
 import SportskoKladjenjeSubNav from './subNav/SportskoKladjenjeSubNav';
 import { useAppSelector } from '../../../redux/hooks';

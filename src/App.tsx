@@ -6,6 +6,7 @@ import Navbar from './feature/navbar/nav/Navbar';
 import Topbar from './feature/navbar/nav/Topbar';
 import Sve from './pages/SportskoKladjenje/Sve';
 import { SUBNAV_ROUTES } from './consts/subNavRoutes';
+import Sidebar from './feature/navbar/Sidebar';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
         <Topbar />
         <Navbar />
+        <Sidebar />
 
         <Routes>
 

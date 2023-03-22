@@ -6,7 +6,7 @@ import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
 const SportskoKladjenjeDesktopSubNav: FC = () => {
     return (
         <ul className='text-[#e6e6e6] items-center hidden lg:flex'>
-            {SUBNAV_ROUTES.map((route) => (
+            {SUBNAV_ROUTES.slice(1).map((route) => (
                 <NavLink
                     to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                     key={route.label}

@@ -6,6 +6,7 @@ import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
 import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 import { selectedStateTrue } from '../../../../redux/selected';
+import { sidebarFalse } from '../../../../redux/sidebarState';
 
 const SportskoKladjenjeMobileSubNav: FC = () => {
 
@@ -17,6 +18,7 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
 
     const submenuToggle = () => {
         setIsDropdownOpen((currState) => !currState)
+        dispatch(sidebarFalse())
     }
 
     const ref = useRef<HTMLUListElement>(null);

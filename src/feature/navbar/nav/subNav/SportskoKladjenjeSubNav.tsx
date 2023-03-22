@@ -7,11 +7,17 @@ import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
 import { useAppDispatch } from '../../../../redux/hooks';
 import { selectedStateFalse } from '../../../../redux/selected';
+import { sidebarFalse } from '../../../../redux/sidebarState';
 
 
 const SubNav: FC = () => {
 
     const dispatch = useAppDispatch();
+
+    const handleModals = () => {
+        dispatch(selectedStateFalse())
+        dispatch(sidebarFalse())
+    }
 
     return (
         <div className='md:overflow-auto'>
@@ -25,7 +31,7 @@ const SubNav: FC = () => {
                                 <NavLink
                                     to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                                     key={route.label}
-                                    onClick={() => dispatch(selectedStateFalse())}
+                                    onClick={() => handleModals()}
                                     className={({ isActive }) =>
                                         `${isActive ? 'sub-nav-active' : ''} sub-nav-li h-[46px] border-b-[2px] text-[#e6e6e6] border-[#525558]`}
                                 >
