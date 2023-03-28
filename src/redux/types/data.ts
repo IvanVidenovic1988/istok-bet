@@ -62,8 +62,6 @@ export type Market = {
 }
 
 
-
-
 export type Sport = {
     id: number;
     categories: Categories;

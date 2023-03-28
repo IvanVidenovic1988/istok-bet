@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../../config/consts';
-import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
+import { ROUTES } from '../../../config/consts';
+import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
 
 const SportskoKladjenjeDesktopSubNav: FC = () => {
     return (

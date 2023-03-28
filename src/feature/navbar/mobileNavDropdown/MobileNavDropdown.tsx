@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NAV_ROUTES, NAV_ROUTES_WITH_BG } from '../../../../consts/NavRoutes';
-import { useAppDispatch } from '../../../../redux/hooks';
-import { NavigationState, setNavigation } from '../../../../redux/navigation';
-import { selectedStateFalse } from '../../../../redux/selected';
+import { NAV_ROUTES, NAV_ROUTES_WITH_BG } from '../../../consts/NavRoutes';
+import { useAppDispatch } from '../../../redux/hooks';
+import { NavigationState, setNavigation } from '../../../redux/navigation';
+import { setSubnavToInactive } from '../../../redux/subnavState';
 
 
 
@@ -18,7 +18,7 @@ const mobileNavDropdown = ({ setDropdown }: any) => {
     const setNavigationAction = (name: NavigationState) => () => {
         dispatch(setNavigation(name))
         setDropdown(false)
-        dispatch(selectedStateFalse())
+        dispatch(setSubnavToInactive())
     }
 
     return (

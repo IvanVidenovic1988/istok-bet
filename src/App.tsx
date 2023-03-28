@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { ROUTES } from './config/consts';
 
-import Navbar from './feature/navbar/nav/Navbar';
-import Topbar from './feature/navbar/nav/Topbar';
+import Navbar from './feature/navbar/Navbar';
+import Topbar from './feature/navbar/Topbar';
 import Sve from './pages/SportskoKladjenje/Sve';
 import { SUBNAV_ROUTES } from './consts/subNavRoutes';
-import Sidebar from './feature/navbar/Sidebar';
+import Sidebar from './feature/sidebar/Sidebar';
 
 
 function App() {

@@ -3,7 +3,7 @@ import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
 import KladenjeUzivoSubNav from './subNav/KladenjeUzivoSubNav';
 import SportskoKladjenjeSubNav from './subNav/SportskoKladjenjeSubNav';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppSelector } from '../../redux/hooks';
 
 const Navbar = () => {
 

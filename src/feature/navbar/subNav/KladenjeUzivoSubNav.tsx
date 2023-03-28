@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../../config/consts';
-import { SUBNAV_ROUTES_UZIVO } from '../../../../consts/subNavRoutes';
+import { ROUTES } from '../../../config/consts';
+import { SUBNAV_ROUTES_UZIVO } from '../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
 
 const SubNavUzivo = () => {

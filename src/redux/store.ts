@@ -1,14 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import navigationReducer from './navigation'
-import isSelectedReducer from './selected'
-import sidebarStateReducer from './sidebarState'
-import sidebarDataReducer from './sidebarData'
+import isSubnavActiveReducer from './subnavState'
+import sidebarDataReducer from './sidebar'
 
 export default configureStore({
     reducer: {
         navigation: navigationReducer,
-        isSelected: isSelectedReducer,
-        sidebarState: sidebarStateReducer,
+        isSubnavActive: isSubnavActiveReducer,
         sidebarData: sidebarDataReducer
     }
 })

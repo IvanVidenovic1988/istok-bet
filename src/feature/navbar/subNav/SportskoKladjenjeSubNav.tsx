@@ -1,22 +1,22 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../../config/consts';
-import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
+import { ROUTES } from '../../../config/consts';
+import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
-import { useAppDispatch } from '../../../../redux/hooks';
-import { selectedStateFalse } from '../../../../redux/selected';
-import { sidebarFalse } from '../../../../redux/sidebarState';
+import { useAppDispatch } from '../../../redux/hooks';
+import { setSubnavToInactive } from '../../../redux/subnavState';
+import { hideSidebar } from '../../../redux/sidebar';
 
 
 const SubNav: FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const handleModals = () => {
-        dispatch(selectedStateFalse())
-        dispatch(sidebarFalse())
+    const handleSubnav = () => {
+        dispatch(setSubnavToInactive())
+        dispatch(hideSidebar())
     }
 
     return (
@@ -31,7 +31,7 @@ const SubNav: FC = () => {
                                 <NavLink
                                     to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                                     key={route.label}
-                                    onClick={() => handleModals()}
+                                    onClick={() => handleSubnav()}
                                     className={({ isActive }) =>
                                         `${isActive ? 'sub-nav-active' : ''} sub-nav-li h-[46px] border-b-[2px] text-[#e6e6e6] border-[#525558]`}
                                 >

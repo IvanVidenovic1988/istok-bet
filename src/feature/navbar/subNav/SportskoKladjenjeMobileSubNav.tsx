@@ -1,16 +1,16 @@
 import React, { FC, useRef, useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../../config/consts';
-import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
-import { useOnClickOutside } from '../../../../hooks/useOnClickOutside';
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
-import { selectedStateTrue } from '../../../../redux/selected';
-import { sidebarFalse } from '../../../../redux/sidebarState';
+import { ROUTES } from '../../../config/consts';
+import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { setSubnavToActive } from '../../../redux/subnavState';
+import { hideSidebar } from '../../../redux/sidebar';
 
 const SportskoKladjenjeMobileSubNav: FC = () => {
 
-    const { selectedState } = useAppSelector((state) => state.isSelected)
+    const { isSubnavActive } = useAppSelector((state) => state.isSubnavActive)
     const dispatch = useAppDispatch();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -18,7 +18,7 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
 
     const submenuToggle = () => {
         setIsDropdownOpen((currState) => !currState)
-        dispatch(sidebarFalse())
+        dispatch(hideSidebar())
     }
 
     const ref = useRef<HTMLUListElement>(null);
@@ -27,13 +27,13 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
     const handleSelectedDate = (label: string) => {
         setSelectedDateRange(label)
         setIsDropdownOpen(false)
-        dispatch(selectedStateTrue())
+        dispatch(setSubnavToActive())
     }
 
     return (
-        <div className={`relative flex items-center bg-[#2c2e30] ${selectedState ? 'border-b-[2px] border-[#ffbb1a] text-[#ffbb1a] bg-[#3f4144]' : 'text-[white] border-b-[2px] border-[#525558]'} lg:hidden`}>
+        <div className={`relative flex items-center bg-[#2c2e30] ${isSubnavActive ? 'border-b-[2px] border-[#ffbb1a] text-[#ffbb1a] bg-[#3f4144]' : 'text-[white] border-b-[2px] border-[#525558]'} lg:hidden`}>
 
-            {selectedState ?
+            {isSubnavActive ?
                 <div
                     onClick={() => submenuToggle()}
                     className='w-[100px] h-[46px capitalize flex items-center justify-between px-[16px]'>
