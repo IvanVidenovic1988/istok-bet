@@ -11,7 +11,9 @@ const Sidebar = () => {
     const [activeSportId, setActiveSportId] = useState<string[]>([])
 
     const { isSidebarOpen } = useAppSelector((state) => state.sidebarData)
-    const contents = useAppSelector((state) => state.sidebarData.contents)
+    const sports = useAppSelector((state) => state.sidebarData.sports)
+
+    console.log("sports: ", sports)
 
     const isLoading = useAppSelector((state) => state.sidebarData.isLoading)
     const dispatch = useAppDispatch();
@@ -37,7 +39,7 @@ const Sidebar = () => {
             <div className={`fixed h-[46px] pt-[30px] -rotate-90 lg:hidden`}>
                 <img
                     src="/images/arrow-down-white.png"
-                    onClick={() => sidebarToggle()}
+                    onClick={sidebarToggle}
                     className={`w-[16px] h-[16px] ${isSidebarOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'}`}
                 ></img>
             </div>
@@ -47,7 +49,7 @@ const Sidebar = () => {
             </div>
 
             <div className=''>
-                {contents && Object.values(contents.sports).map((sport) => (
+                {sports && Object.values(sports).map((sport) => (
                     <div key={sport.id}>
                         <SportLink
                             sport={sport}

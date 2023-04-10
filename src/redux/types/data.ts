@@ -82,3 +82,23 @@ export type BettingData = {
 }
 
 
+export type MappedSports = {
+    id: number;
+    name: string;
+    position: number;
+    numberOfEvents: number;
+    categories: {
+        id: number;
+        name: string;
+        position: number;
+        numberOfEvents: number;
+        tournaments: {
+            id: number;
+            name: string;
+            position: number;
+            numberOfEvents: number;
+        }[];
+    }[];
+}[];
+
+

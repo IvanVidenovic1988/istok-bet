@@ -6,7 +6,7 @@ import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
 import { useAppDispatch } from '../../../redux/hooks';
-import { setSubnavToInactive } from '../../../redux/subnavState';
+import { setSubnavToInactive } from '../../../redux/navigation';
 import { hideSidebar } from '../../../redux/sidebar';
 
 

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { NAV_ROUTES, NAV_ROUTES_WITH_BG } from '../../../consts/NavRoutes';
 import { useAppDispatch } from '../../../redux/hooks';
 import { NavigationState, setNavigation } from '../../../redux/navigation';
-import { setSubnavToInactive } from '../../../redux/subnavState';
+import { setSubnavToInactive } from '../../../redux/navigation';
 
 
 

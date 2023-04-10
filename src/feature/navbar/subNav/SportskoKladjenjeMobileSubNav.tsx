@@ -5,12 +5,12 @@ import { ROUTES } from '../../../config/consts';
 import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { setSubnavToActive } from '../../../redux/subnavState';
+import { setSubnavToActive } from '../../../redux/navigation';
 import { hideSidebar } from '../../../redux/sidebar';
 
 const SportskoKladjenjeMobileSubNav: FC = () => {
 
-    const { isSubnavActive } = useAppSelector((state) => state.isSubnavActive)
+    const { isSubnavActive } = useAppSelector((state) => state.navigation)
     const dispatch = useAppDispatch();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
