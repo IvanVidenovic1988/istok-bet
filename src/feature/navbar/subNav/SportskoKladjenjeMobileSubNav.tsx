@@ -35,8 +35,8 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
 
             {isSubnavActive ?
                 <div
-                    onClick={() => submenuToggle()}
-                    className='w-[100px] h-[46px capitalize flex items-center justify-between px-[16px]'>
+                    onClick={submenuToggle}
+                    className='w-[100px] h-[46px] capitalize flex items-center justify-between px-[16px]'>
                     {selectedDateRange}
                     <img
                         src="/images/arrow-down-white.png"

@@ -14,7 +14,7 @@ const SubNav: FC = () => {
 
     const dispatch = useAppDispatch();
 
-    const handleSubnav = () => {
+    const resetNavigation = () => {
         dispatch(setSubnavToInactive())
         dispatch(hideSidebar())
     }
@@ -31,7 +31,7 @@ const SubNav: FC = () => {
                                 <NavLink
                                     to={(`${ROUTES.sportskoKladjenje}/${route.link}`)}
                                     key={route.label}
-                                    onClick={() => handleSubnav()}
+                                    onClick={resetNavigation}
                                     className={({ isActive }) =>
                                         `${isActive ? 'sub-nav-active' : ''} sub-nav-li h-[46px] border-b-[2px] text-[#e6e6e6] border-[#525558]`}
                                 >
