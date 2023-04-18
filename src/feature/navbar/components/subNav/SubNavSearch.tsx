@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SubNavSearch = () => {
+
     return (
         <div className='hidden w-[296px] sm:flex sm:mr-[10px]'>
             <input

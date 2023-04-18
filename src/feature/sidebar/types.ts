@@ -1,4 +1,4 @@
-export type TournamentGroups = {
+type TournamentGroups = {
     id: number;
     description: string | null;
     name: string;
@@ -22,7 +22,7 @@ export type Tournament = {
     tournamentGroups: { [id: number]: TournamentGroups }
 }
 
-export type Tournaments = { [id: number]: Tournament }
+type Tournaments = { [id: number]: Tournament }
 
 export type Category = {
     id: number;
@@ -35,9 +35,9 @@ export type Category = {
     tournaments: Tournaments;
 }
 
-export type Categories = { [id: number]: Category }
+type Categories = { [id: number]: Category }
 
-export type MarketOutcome = {
+type MarketOutcome = {
     id: number;
     isCustomBet: boolean;
     name: string;
@@ -45,7 +45,7 @@ export type MarketOutcome = {
     shortName: string;
 }
 
-export type Market = {
+type Market = {
     collapsed: boolean;
     description: string;
     displayModeType: number;

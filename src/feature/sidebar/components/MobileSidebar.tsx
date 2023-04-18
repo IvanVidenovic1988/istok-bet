@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { fetchContent } from '../../redux/sidebar';
-import { toggleSidebar } from '../../redux/sidebar';
-import CategoryLink from './CategoryLink';
-import SportLink from './SportLink';
-import TournamentLink from './TournamentLink';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { fetchContent } from '../redux/sidebar';
+import { toggleSidebar } from '../redux/sidebar';
+import CategoryLink from './sidebarLinks/CategoryLink';
+import SportLink from './sidebarLinks/SportLink';
+import TournamentLink from './sidebarLinks/TournamentLink';
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = () => {
+
+const MobileSidebar = () => {
 
     const [activeSportId, setActiveSportId] = useState<string[]>([])
 
@@ -106,5 +107,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
-
+export default MobileSidebar;

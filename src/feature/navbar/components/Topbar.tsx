@@ -12,7 +12,6 @@ const Topbar: FC = () => {
         setDropdown((currState) => !currState)
     }
 
-
     return (
         <>
             <div className='w-full h-[75px] px-[10px] bg-[#1a1c1d] flex justify-between items-center'>

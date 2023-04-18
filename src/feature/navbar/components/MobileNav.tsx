@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import DecimalniSubmenu from '../../components/DecimalniSubmenu';
+import DecimalniSubmenu from '../../../components/DecimalniSubmenu';
 
 const MobileNav = () => {
-
 
     const [isModalOpen, setModalOpen] = useState(false);
 

@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../../../config/consts';
-import { SUBNAV_ROUTES } from '../../../consts/subNavRoutes';
+import { ROUTES } from '../../../../config/consts';
+import { SUBNAV_ROUTES } from '../../../../consts/subNavRoutes';
 import SubNavSearch from './SubNavSearch';
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav';
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav';
-import { useAppDispatch } from '../../../redux/hooks';
-import { setSubnavToInactive } from '../../../redux/navigation';
-import { hideSidebar } from '../../../redux/sidebar';
+import { useAppDispatch } from '../../../../redux/hooks';
+import { setSubnavToInactive } from '../../redux/navigation';
+import { hideSidebar } from '../../../sidebar/redux/sidebar';
 
 
 const SubNav: FC = () => {

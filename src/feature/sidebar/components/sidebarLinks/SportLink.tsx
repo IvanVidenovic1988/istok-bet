@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Sport } from '../../redux/types/data';
+import { Sport } from '../../types';
+
 
 type Props = {
     sport: Sport;

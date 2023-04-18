@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { SidebarDataResponse, SidebarData, Sports } from './types/data';
+
 import moment from "moment";
-import { request } from '../utils/request';
+import { request } from '../../../utils/request';
+import { mapSidebarData } from '../utils/sidebarUtils';
+import { SidebarData, SidebarDataResponse } from '../types';
 
 type InitialState = {
     sports: SidebarData;
@@ -23,29 +25,11 @@ export const fetchContent = createAsyncThunk(
         const today = moment().add('day').format("YYYY-MM-DD")
         const twoWeeksFromToday = moment().add(14, 'day').format("YYYY-MM-DD")
 
-        return await request<SidebarDataResponse>(`filter[from]=${today}T00:00:00&filter[to]=${twoWeeksFromToday}T00:00:00`);
+        return await request<SidebarDataResponse>('meta', `filter[from]=${today}T00:00:00&filter[to]=${twoWeeksFromToday}T00:00:00`);
     }
 )
 
-const sortByPosition = <T extends { position: number }>(sportsData: T[]) => {
-    return sportsData.sort((a, b) => a.position - b.position)
-}
-
-const mapSidebarData = (sports: Sports): SidebarData => {
-    return sortByPosition(Object.values(sports)).map((sport) => {
-        return {
-            ...sport,
-            categories: sortByPosition(Object.values(sport.categories)).map((category) => {
-                return {
-                    ...category,
-                    tournaments: sortByPosition(Object.values(category.tournaments))
-                };
-            }),
-        };
-    });
-};
-
-export const contentSlice = createSlice({
+export const sidebarSlice = createSlice({
     name: 'content',
     initialState,
     reducers: {
@@ -71,6 +55,6 @@ export const contentSlice = createSlice({
     },
 })
 
-export const { toggleSidebar, hideSidebar } = contentSlice.actions;
+export const { toggleSidebar, hideSidebar } = sidebarSlice.actions;
 
-export default contentSlice.reducer
+export default sidebarSlice.reducer
