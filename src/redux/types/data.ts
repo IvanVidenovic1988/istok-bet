@@ -75,30 +75,12 @@ export type Sport = {
 
 export type Sports = { [id: number]: Sport }
 
-export type BettingData = {
+export type SidebarDataResponse = {
     marketGroups: any;
     marketOfferTemplates: any;
     sports: Sports;
 }
 
-
-export type MappedSports = {
-    id: number;
-    name: string;
-    position: number;
-    numberOfEvents: number;
-    categories: {
-        id: number;
-        name: string;
-        position: number;
-        numberOfEvents: number;
-        tournaments: {
-            id: number;
-            name: string;
-            position: number;
-            numberOfEvents: number;
-        }[];
-    }[];
-}[];
-
-
+type SidebarCategory = Omit<Category, 'tournaments'> & { tournaments: Tournament[] };
+type SidebarSport = Omit<Sport, 'categories'> & { categories: SidebarCategory[] };
+export type SidebarData = SidebarSport[];

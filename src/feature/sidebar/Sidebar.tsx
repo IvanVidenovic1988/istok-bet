@@ -14,8 +14,6 @@ const Sidebar = () => {
     const { isSidebarOpen } = useAppSelector((state) => state.sidebarData)
     const sports = useAppSelector((state) => state.sidebarData.sports)
 
-    console.log("sports: ", sports)
-
     const isLoading = useAppSelector((state) => state.sidebarData.isLoading)
     const dispatch = useAppDispatch();
 
@@ -52,7 +50,7 @@ const Sidebar = () => {
 
             {!isSidebarOpen ?
                 <div className='pt-[46px]'>
-                    {sports && Object.values(sports).map((sport) => (
+                    {sports.map((sport) => (
                         <NavLink
                             to={`${sport.id}-${sport.name}`}
                             key={sport.id}
@@ -68,7 +66,7 @@ const Sidebar = () => {
                 </div>
                 :
                 <div className='pt-[46px]'>
-                    {sports && Object.values(sports).map((sport) => (
+                    {sports.map((sport) => (
                         <div key={sport.id}>
                             <SportLink
                                 sport={sport}
@@ -77,7 +75,7 @@ const Sidebar = () => {
                             />
 
                             <div className={`bg-[#242628] ${activeSportId.includes(`${sport.id}-${sport.name}`) ? "h-auto overflow-hidden duration-150" : "h-0 overflow-hidden duration-150"}`}>
-                                {Object.values(sport.categories).map((category) => (
+                                {sport.categories.map((category) => (
                                     <div key={category.id}>
                                         <CategoryLink
                                             sport={sport}
@@ -87,7 +85,7 @@ const Sidebar = () => {
                                         />
 
                                         <div className={` ${activeSportId.includes(`${category.id}-${category.name}`) ? "h-auto bg-[#3f4144] lg:bg-[#1a1c1d] overflow-hidden duration-150" : "h-0 overflow-hidden duration-150"}`}>
-                                            {Object.values(category.tournaments).map((tournament) => (
+                                            {category.tournaments.map((tournament) => (
                                                 <div key={tournament.id}>
                                                     <TournamentLink
                                                         sport={sport}
@@ -97,7 +95,6 @@ const Sidebar = () => {
                                                 </div>
                                             ))}
                                         </div>
-
                                     </div>
                                 ))}
                             </div>

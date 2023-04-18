@@ -1,7 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Sport } from '../../redux/types/data';
 
-const SportLink = ({ sport, toggleSidebarMenu, activeSportId }: any) => {
+type Props = {
+    sport: Sport;
+    toggleSidebarMenu: (arg0: string) => void;
+    activeSportId: string[];
+}
+
+const SportLink = ({ sport, toggleSidebarMenu, activeSportId }: Props) => {
 
     return (
         <NavLink
