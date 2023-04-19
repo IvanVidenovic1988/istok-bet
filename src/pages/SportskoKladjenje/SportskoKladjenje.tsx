@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const SportskoKladjenje = () => {
-    return (
-        <div className=''>
-
-        </div>
-    );
+  return <div className=""></div>
 }
 
-export default SportskoKladjenje;
+export default SportskoKladjenje

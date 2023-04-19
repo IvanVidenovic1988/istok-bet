@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAppDispatch } from '../../../../shared/redux/hooks'
 import { NavigationState, setNavigation } from '../../redux/navigation'

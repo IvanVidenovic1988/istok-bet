@@ -1,4 +1,4 @@
-import moment from "moment"
+import moment from 'moment'
 
 export const formatDate = (date: number) => {
   if (date === 0) {
