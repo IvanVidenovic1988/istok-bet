@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import navigationReducer from '../../feature/navbar/redux/navigation'
-import sidebarDataReducer from '../../feature/sidebar/redux/sidebar'
+import navigationReducer from '../../features/navigation/redux/navigation'
+import sidebarDataReducer from '../../features/sidebar/redux/sidebar'
 
 export default configureStore({
     reducer: {
