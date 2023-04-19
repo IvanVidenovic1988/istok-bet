@@ -1,25 +1,22 @@
-import React from 'react';
+import React from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { ROUTES } from './config/consts';
+import { ROUTES } from './shared/routes'
 
-import Navbar from './feature/navbar/nav/Navbar';
-import Topbar from './feature/navbar/nav/Topbar';
-import Sve from './pages/SportskoKladjenje/Sve';
-import { SUBNAV_ROUTES } from './consts/subNavRoutes';
-
+import Navbar from './features/navigation/components/Navbar'
+import Topbar from './features/navigation/components/Topbar'
+import Sve from './pages/SportskoKladjenje/Sve'
+import Sidebar from './features/sidebar/components/Sidebar'
+import { SUBNAV_ROUTES } from './features/navigation/routes'
 
 function App() {
-
   return (
     <div>
-
       <BrowserRouter>
-
         <Topbar />
         <Navbar />
+        <Sidebar />
 
         <Routes>
-
           <Route path={ROUTES.sportskoKladjenje}>
             <Route index element={<Navigate to={ROUTES.sve} />} />
 
@@ -44,12 +41,10 @@ function App() {
           <Route path={ROUTES.blog} element={<Sve />} />
           <Route path={ROUTES.balkanKlub} element={<Sve />} />
           <Route path={ROUTES.register} element={<Sve />} />
-
         </Routes>
-
       </BrowserRouter>
     </div>
   )
 }
 
-export default App;
+export default App

@@ -1,10 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const KladjenjeUzivo = () => {
-    return (
-        <div className='text-center'>
-        </div>
-    );
+  return <div className="text-center"></div>
 }
 
-export default KladjenjeUzivo;
+export default KladjenjeUzivo
