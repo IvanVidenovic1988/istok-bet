@@ -1,12 +1,13 @@
 import React, { FC, useRef } from 'react';
-import { useOnClickOutside } from '../hooks/useOnClickOutside';
+import { useOnClickOutside } from '../../../shared/hooks/useOnClickOutside';
+
 
 type Props = {
     setModalOpen: (isModalOpen: boolean) => void;
 }
 
 
-const DecimalniSubmenu: FC<Props> = ({ setModalOpen }) => {
+const DecimalSubmenu: FC<Props> = ({ setModalOpen }) => {
 
     const ref = useRef<HTMLUListElement>(null);
     useOnClickOutside(ref, () => setModalOpen(false));
@@ -26,4 +27,4 @@ const DecimalniSubmenu: FC<Props> = ({ setModalOpen }) => {
     );
 }
 
-export default DecimalniSubmenu;
+export default DecimalSubmenu;

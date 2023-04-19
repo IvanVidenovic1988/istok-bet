@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import moment from "moment";
-import { request } from '../../../utils/request';
-import { mapSidebarData } from '../utils/sidebarUtils';
+import { request } from '../../../shared/utils/request';
+import { mapSidebarData } from '../utils/utils';
 import { SidebarData, SidebarDataResponse } from '../types';
 
 type InitialState = {

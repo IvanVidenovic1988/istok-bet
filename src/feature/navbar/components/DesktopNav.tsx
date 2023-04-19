@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import DecimalniSubmenu from '../../../components/DecimalniSubmenu';
-import { NAV_ROUTES, NAV_ROUTES_WITH_BG } from '../../../consts/NavRoutes';
-import { useAppDispatch } from '../../../redux/hooks';
+import DecimalSubmenu from './DecimalSubmenu ';
+import { NAV_ROUTES, NAV_ROUTES_WITH_BG } from '../../../shared/routes/routes';
+import { useAppDispatch } from '../../../shared/redux/hooks';
 import { NavigationState, setNavigation } from '../redux/navigation';
+
+
+
 
 const DesktopNav = () => {
 
@@ -62,7 +65,7 @@ const DesktopNav = () => {
                     >
                         <p>Decimalni</p>
 
-                        {isModalOpen && <DecimalniSubmenu setModalOpen={setModalOpen} />}
+                        {isModalOpen && <DecimalSubmenu setModalOpen={setModalOpen} />}
                     </li>
 
                     <li className='pl-3 text-[12px]'>

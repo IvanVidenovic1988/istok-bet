@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks';
 import { fetchContent } from '../redux/sidebar';
 import { toggleSidebar } from '../redux/sidebar';
 import CategoryLink from './sidebarLinks/CategoryLink';

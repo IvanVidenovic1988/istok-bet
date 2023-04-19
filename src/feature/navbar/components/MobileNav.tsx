@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import DecimalniSubmenu from '../../../components/DecimalniSubmenu';
+import DecimalSubmenu from './DecimalSubmenu ';
+
 
 const MobileNav = () => {
 
@@ -24,7 +25,7 @@ const MobileNav = () => {
                             src='/images/slot-machine.png'
                             className='mobile-dropdown-icon'
                         ></img>
-                        {isModalOpen && <DecimalniSubmenu setModalOpen={setModalOpen} />}
+                        {isModalOpen && <DecimalSubmenu setModalOpen={setModalOpen} />}
                     </li>
                     <li
                         className='mr-30px'>
