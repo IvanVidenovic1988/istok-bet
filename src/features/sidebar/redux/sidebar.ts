@@ -23,10 +23,14 @@ export const fetchContent = createAsyncThunk('content/fetchContent', async () =>
   const today = moment().add('day').format('YYYY-MM-DD')
   const twoWeeksFromToday = moment().add(14, 'day').format('YYYY-MM-DD')
 
-  return await request<SidebarDataResponse>(
-    'meta',
-    `filter[from]=${today}T00:00:00&filter[to]=${twoWeeksFromToday}T00:00:00`,
-  )
+  const filters = {
+    from: `${today}T00:00:00`,
+    to: `${twoWeeksFromToday}T00:00:00`,
+  }
+
+  return await request<SidebarDataResponse>('meta', {
+    filters,
+  })
 })
 
 export const sidebarSlice = createSlice({
