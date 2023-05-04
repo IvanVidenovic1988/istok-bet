@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks'
-import { fetchContent } from '../redux/sidebar'
+import { fetchSidebarSports } from '../redux/sidebar'
 import CategoryLink from './sidebarLinks/CategoryLink'
 import SportLink from './sidebarLinks/SportLink'
 import TournamentLink from './sidebarLinks/TournamentLink'
@@ -22,7 +22,7 @@ const MobileSidebar = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchContent())
+    dispatch(fetchSidebarSports())
   }, [dispatch])
 
   return (
@@ -41,11 +41,10 @@ const MobileSidebar = () => {
             />
 
             <div
-              className={`bg-[#242628] ${
-                activeSportId.includes(`${sport.id}-${sport.name}`)
-                  ? 'h-auto overflow-hidden duration-150'
-                  : 'h-0 overflow-hidden duration-150'
-              }`}
+              className={`bg-[#242628] ${activeSportId.includes(`${sport.id}-${sport.name}`)
+                ? 'h-auto overflow-hidden duration-150'
+                : 'h-0 overflow-hidden duration-150'
+                }`}
             >
               {sport.categories.map((category) => (
                 <div key={category.id}>
@@ -57,11 +56,10 @@ const MobileSidebar = () => {
                   />
 
                   <div
-                    className={` ${
-                      activeSportId.includes(`${category.id}-${category.name}`)
-                        ? 'h-auto bg-[#3f4144] lg:bg-[#1a1c1d] overflow-hidden duration-150'
-                        : 'h-0 overflow-hidden duration-150'
-                    }`}
+                    className={` ${activeSportId.includes(`${category.id}-${category.name}`)
+                      ? 'h-auto bg-[#3f4144] lg:bg-[#1a1c1d] overflow-hidden duration-150'
+                      : 'h-0 overflow-hidden duration-150'
+                      }`}
                   >
                     {category.tournaments.map((tournament) => (
                       <div key={tournament.id}>

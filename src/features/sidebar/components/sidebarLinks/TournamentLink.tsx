@@ -17,10 +17,9 @@ const TournamentLink = ({ sport, category, tournament }: Props) => {
       )}/${tournament.id}-${tournament.name.replaceAll(' ', '-')}`}
       key={tournament.id}
       className={({ isActive }) =>
-        `${
-          isActive
-            ? 'border-l-[8px] border-l-[#e9af00]'
-            : 'border-l-[8px] border-l-transparent'
+        `${isActive
+          ? 'border-l-[8px] border-l-[#e9af00]'
+          : 'border-l-[8px] border-l-transparent'
         } group hover:bg-[#2f2f2f] pl-7 pr-6 h-[30px] flex items-center justify-between text-[14px] text-[#aeaeae]`
       }
     >

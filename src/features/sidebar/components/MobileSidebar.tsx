@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks'
-import { fetchContent } from '../redux/sidebar'
+import { fetchSidebarSports } from '../redux/sidebar'
 import { toggleSidebar } from '../redux/sidebar'
 import CategoryLink from './sidebarLinks/CategoryLink'
 import SportLink from './sidebarLinks/SportLink'
@@ -29,24 +29,22 @@ const MobileSidebar = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchContent())
+    dispatch(fetchSidebarSports())
   }, [dispatch])
 
   return (
     <div
-      className={`lg:w-[190px] bg-[#3f4144] lg:bg-transparent rounded-sm ${
-        isSidebarOpen
-          ? 'w-[300px] duration-100 ease-linear'
-          : 'w-[46px] duration-100 ease-linear'
-      } `}
+      className={`relative lg:w-[190px] bg-[#3f4144] lg:bg-transparent rounded-sm ${isSidebarOpen
+        ? 'w-[300px] duration-100 ease-linear'
+        : 'w-[46px] duration-100 ease-linear'
+        } cursor-pointer`}
     >
-      <div className={`fixed h-[46px] pt-[30px] -rotate-90 lg:hidden`}>
+      <div className={`absolute h-[46px] -rotate-90 lg:hidden ${isSidebarOpen ? 'pt-[25px] pr-[10px]' : 'flex-center pt-[27px]'}`}>
         <img
           src="/images/arrow-down-white.png"
           onClick={sidebarToggle}
-          className={`w-[16px] h-[16px] ${
-            isSidebarOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'
-          }`}
+          className={`w-[16px] h-[16px] ${isSidebarOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'
+            }`}
         ></img>
       </div>
 
@@ -81,11 +79,10 @@ const MobileSidebar = () => {
               />
 
               <div
-                className={`bg-[#242628] ${
-                  activeSportId.includes(`${sport.id}-${sport.name}`)
-                    ? 'h-auto overflow-hidden duration-150'
-                    : 'h-0 overflow-hidden duration-150'
-                }`}
+                className={`bg-[#242628] ${activeSportId.includes(`${sport.id}-${sport.name}`)
+                  ? 'h-auto overflow-hidden duration-150'
+                  : 'h-0 overflow-hidden duration-150'
+                  }`}
               >
                 {sport.categories.map((category) => (
                   <div key={category.id}>
@@ -97,11 +94,10 @@ const MobileSidebar = () => {
                     />
 
                     <div
-                      className={` ${
-                        activeSportId.includes(`${category.id}-${category.name}`)
-                          ? 'h-auto bg-[#3f4144] lg:bg-[#1a1c1d] overflow-hidden duration-150'
-                          : 'h-0 overflow-hidden duration-150'
-                      }`}
+                      className={` ${activeSportId.includes(`${category.id}-${category.name}`)
+                        ? 'h-auto bg-[#3f4144] lg:bg-[#1a1c1d] overflow-hidden duration-150'
+                        : 'h-0 overflow-hidden duration-150'
+                        }`}
                     >
                       {category.tournaments.map((tournament) => (
                         <div key={tournament.id}>

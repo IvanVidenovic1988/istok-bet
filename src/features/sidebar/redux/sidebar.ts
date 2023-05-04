@@ -19,19 +19,22 @@ const initialState: InitialState = {
   isSidebarOpen: false,
 }
 
-export const fetchContent = createAsyncThunk('content/fetchContent', async () => {
-  const today = moment().add('day').format('YYYY-MM-DD')
-  const twoWeeksFromToday = moment().add(14, 'day').format('YYYY-MM-DD')
+export const fetchSidebarSports = createAsyncThunk(
+  'content/fetchSidebarSports',
+  async () => {
+    const today = moment().add('day').format('YYYY-MM-DD')
+    const twoWeeksFromToday = moment().add(14, 'day').format('YYYY-MM-DD')
 
-  const filters = {
-    from: `${today}T00:00:00`,
-    to: `${twoWeeksFromToday}T00:00:00`,
-  }
+    const filters = {
+      from: `${today}T00:00:00`,
+      to: `${twoWeeksFromToday}T00:00:00`,
+    }
 
-  return await request<SidebarDataResponse>('meta', {
-    filters,
-  })
-})
+    return await request<SidebarDataResponse>('meta', {
+      filters,
+    })
+  },
+)
 
 export const sidebarSlice = createSlice({
   name: 'content',
@@ -45,14 +48,14 @@ export const sidebarSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchContent.pending, (state) => {
+    builder.addCase(fetchSidebarSports.pending, (state) => {
       state.isLoading = true
     })
-    builder.addCase(fetchContent.fulfilled, (state, action) => {
+    builder.addCase(fetchSidebarSports.fulfilled, (state, action) => {
       state.isLoading = false
-      state.sports = mapSidebarData(action.payload.sports)
+      state.sports = action.payload.sports ? mapSidebarData(action.payload.sports) : []
     })
-    builder.addCase(fetchContent.rejected, (state, action) => {
+    builder.addCase(fetchSidebarSports.rejected, (state, action) => {
       state.isLoading = false
       state.error = action.error.message
     })

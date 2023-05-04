@@ -7,6 +7,7 @@ import Topbar from './features/navigation/components/Topbar'
 import Sve from './pages/SportskoKladjenje/Sve'
 import Sidebar from './features/sidebar/components/Sidebar'
 import { SUBNAV_ROUTES } from './features/navigation/routes'
+import Events from './features/events/components/Events'
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Sidebar />
 
         <Routes>
+          <Route path={':sportSlug'} element={<Events />} />
+          <Route path={':sportSlug/:categorySlug'} element={<Events />} />
+          <Route path={':sportSlug/:categorySlug/:tournamentSlug'} element={<Events />} />
+
           <Route path={ROUTES.sportskoKladjenje}>
             <Route index element={<Navigate to={ROUTES.sve} />} />
 

@@ -1,7 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+
 
 const sve = () => {
-  return <h1 className="text-6xl ">sve</h1>
+
+  return (
+    <div>sve</div>
+  )
+
 }
 
 export default sve

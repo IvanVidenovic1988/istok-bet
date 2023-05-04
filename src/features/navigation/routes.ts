@@ -1,6 +1,6 @@
 import { ROUTES } from '../../shared/routes'
 import Sve from '../../pages/SportskoKladjenje/Sve'
-import { formatDate } from './utils'
+import { formatDate } from './utils/utils'
 
 export const NAV_ROUTES = [
   {
