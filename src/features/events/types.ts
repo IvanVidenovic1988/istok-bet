@@ -17,7 +17,7 @@ export type Market = {
   marketId: number
   name: string
   outcomes: { [id: number]: Outcome }
-  specialValues: []
+  specialValues: number
 }
 
 export type Competitor = {

@@ -35,7 +35,7 @@ const prepareParams = (params?: Params) => {
 
 export const request = async <T>(route: string, params?: Params): Promise<T> => {
   const queryParams = prepareParams(params)
-  console.log('queryParams: ', queryParams)
+  // console.log('queryParams: ', queryParams)
 
   const response = await fetch(
     `${env.API_URL}${route}?${queryParams}&companyUuid=${env.API_KEY}`,

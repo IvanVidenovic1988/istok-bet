@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import moment from 'moment'
 import { request } from '../../../shared/utils/request'
-import { EventsDataResponse, mappedEvents } from '../types'
+import { Events, EventsDataResponse, mappedEvents } from '../types'
 import { mapEventsData } from '../utils/utils'
 
 type Params = {
@@ -13,14 +13,18 @@ type Params = {
 
 type InitialState = {
   events: mappedEvents | null
+  nonMappedEvents: Events | null
   isLoading: boolean
   error: string | undefined
+  activeOutcomeId: number[]
 }
 
 const initialState: InitialState = {
   events: null,
+  nonMappedEvents: null,
   isLoading: false,
   error: '',
+  activeOutcomeId: [],
 }
 
 export const fetchEvents = createAsyncThunk(
@@ -45,18 +49,37 @@ export const fetchEvents = createAsyncThunk(
       to: `${twoWeeksFromToday}T00:00:00`,
     }
 
-    console.log('params: ', params)
-    return await request<EventsDataResponse>('events', {
+    // console.log('params: ', params)
+    const nonMappedEvent = await request<EventsDataResponse>('events', {
       config: eventConfig,
       filters: eventfilters,
     })
+    // console.log('nonMappedEvent: ', nonMappedEvent)
+    return nonMappedEvent
   },
 )
 
-export const sidebarSlice = createSlice({
+export const eventSlice = createSlice({
   name: 'content',
   initialState,
-  reducers: {},
+  reducers: {
+    getActiveOutcomeId: (state, action) => {
+      if (state.activeOutcomeId.includes(action.payload)) {
+        state.activeOutcomeId = state.activeOutcomeId.filter(
+          (activeId) => activeId !== action.payload,
+        )
+      } else {
+        state.activeOutcomeId.push(action.payload)
+      }
+    },
+    removeActiveOutcomeId: (state, action) => {
+      if (state.activeOutcomeId.includes(action.payload)) {
+        state.activeOutcomeId = state.activeOutcomeId.filter(
+          (activeId) => activeId !== action.payload,
+        )
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchEvents.pending, (state) => {
       state.isLoading = true
@@ -64,6 +87,7 @@ export const sidebarSlice = createSlice({
     builder.addCase(fetchEvents.fulfilled, (state, action) => {
       state.isLoading = false
       state.events = mapEventsData(action.payload.events)
+      state.nonMappedEvents = action.payload.events
     })
     builder.addCase(fetchEvents.rejected, (state, action) => {
       state.isLoading = false
@@ -72,4 +96,6 @@ export const sidebarSlice = createSlice({
   },
 })
 
-export default sidebarSlice.reducer
+export const { getActiveOutcomeId, removeActiveOutcomeId } = eventSlice.actions
+
+export default eventSlice.reducer

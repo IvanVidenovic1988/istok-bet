@@ -26,7 +26,7 @@ const MobileSidebar = () => {
   }, [dispatch])
 
   return (
-    <div className={'w-[190px] bg-transparent rounded-sm'}>
+    <div className='w-[250px] bg-[#1a1c1d] rounded-sm'>
       <div className="pl-[16px] h-[35px]">
         <h2 className="text-[14px] text-[#ffc107] font-bold">SPORT</h2>
       </div>

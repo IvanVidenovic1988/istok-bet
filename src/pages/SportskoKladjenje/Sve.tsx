@@ -1,10 +1,13 @@
 import React, { FC, useEffect } from 'react'
+import Events from '../../features/events/components/Events'
 
 
 const sve = () => {
 
   return (
-    <div>sve</div>
+    <>
+      <Events />
+    </>
   )
 
 }

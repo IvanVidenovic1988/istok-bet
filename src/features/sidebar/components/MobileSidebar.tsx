@@ -13,6 +13,7 @@ const MobileSidebar = () => {
   const { isSidebarOpen } = useAppSelector((state) => state.sidebarData)
   const sports = useAppSelector((state) => state.sidebarData.sports)
 
+
   const isLoading = useAppSelector((state) => state.sidebarData.isLoading)
   const dispatch = useAppDispatch()
 

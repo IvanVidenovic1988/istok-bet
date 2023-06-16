@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Category, Sport, Tournament } from '../../types'
+import { ROUTES } from '../../../../shared/routes'
+import { closeAllMarketsForSingleEvent } from '../../../events/redux/singleEvent'
+import { useAppDispatch } from '../../../../shared/redux/hooks'
 
 type Props = {
   sport: Sport
@@ -9,9 +12,13 @@ type Props = {
 }
 
 const TournamentLink = ({ sport, category, tournament }: Props) => {
+
+  const dispatch = useAppDispatch()
+
   return (
     <NavLink
-      to={`${sport.id}-${sport.name}/${category.id}-${category.name.replaceAll(
+      onClick={() => dispatch(closeAllMarketsForSingleEvent())}
+      to={`${ROUTES.sportskoKladjenje}/${ROUTES.sve}/${sport.id}-${sport.name}/${category.id}-${category.name.replaceAll(
         ' ',
         '-',
       )}/${tournament.id}-${tournament.name.replaceAll(' ', '-')}`}

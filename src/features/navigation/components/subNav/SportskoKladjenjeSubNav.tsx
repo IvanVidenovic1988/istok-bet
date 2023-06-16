@@ -4,12 +4,18 @@ import { ROUTES } from '../../../../shared/routes'
 import SubNavSearch from './SubNavSearch'
 import SportskoKladjenjeDesktopSubNav from './SportskoKladjenjeDesktopSubNav'
 import SportskoKladjenjeMobileSubNav from './SportskoKladjenjeMobileSubNav'
-import { useAppDispatch } from '../../../../shared/redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../../shared/redux/hooks'
 import { setSubnavToInactive } from '../../redux/navigation'
 import { hideSidebar } from '../../../sidebar/redux/sidebar'
 import { SUBNAV_ROUTES } from '../../routes'
+import { toggleTicket } from '../../../ticket/redux/ticket'
 
 const SubNav: FC = () => {
+
+  const ticketItems = useAppSelector((state) => state.ticket.ticketItems)
+  console.log('ticketItems: ', ticketItems);
+  const ticketItemsCount = Object.entries(ticketItems).length
+
   const dispatch = useAppDispatch()
 
   const resetNavigation = () => {
@@ -18,7 +24,7 @@ const SubNav: FC = () => {
   }
 
   return (
-    <div className="md:overflow-auto">
+    <div className="flex md:overflow-auto">
       <div className="md:w-[calc(100%-19.375rem)] md:block ">
         <div className="h-[46px] my-[10px] mr-[10px] bg-[#2c2e30] flex justify-between">
           <div className="flex">
@@ -29,8 +35,7 @@ const SubNav: FC = () => {
                   key={route.label}
                   onClick={resetNavigation}
                   className={({ isActive }) =>
-                    `${
-                      isActive ? 'sub-nav-active' : ''
+                    `${isActive ? 'sub-nav-active' : ''
                     } sub-nav-li h-[46px] border-b-[2px] text-[#e6e6e6] border-[#525558]`
                   }
                 >
@@ -51,10 +56,21 @@ const SubNav: FC = () => {
               <img src="/images/slot-machine.png" className="w-[16px] h-[16px]"></img>
             </div>
 
+            <div
+              onClick={() => dispatch(toggleTicket())}
+              className='w-[88px] bg-[#525455] flex-center cursor-pointer lg:hidden'
+            >
+              <span className='text-white'>Tiket</span>
+              <span className='w-[18px] h-[18px] flex-center ml-1 text-[12px] text-[white] font-bold bg-[#ffc107] rounded-sm'>
+                {ticketItemsCount}
+              </span>
+            </div>
+
             <SubNavSearch />
           </div>
         </div>
       </div>
+
     </div>
   )
 }

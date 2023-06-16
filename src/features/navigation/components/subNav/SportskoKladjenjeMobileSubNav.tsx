@@ -30,11 +30,11 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
 
   return (
     <div
-      className={`relative flex items-center bg-[#2c2e30] ${
-        isSubnavActive
+      className={`relative flex items-center bg-[#2c2e30] 
+      ${isSubnavActive
           ? 'border-b-[2px] border-[#ffbb1a] text-[#ffbb1a] bg-[#3f4144]'
           : 'text-[white] border-b-[2px] border-[#525558]'
-      } lg:hidden`}
+        } lg:hidden`}
     >
       {isSubnavActive ? (
         <div
@@ -44,22 +44,22 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
           {selectedDateRange}
           <img
             src="/images/arrow-down-white.png"
-            className={`w-[12px] h-[12px] ${
-              isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'
-            }`}
+            className={`w-[12px] h-[12px] 
+            ${isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'}`
+            }
           ></img>
         </div>
       ) : (
         <div
-          onClick={() => submenuToggle()}
+          onClick={submenuToggle}
           className="w-[100px] h-[46px] flex items-center justify-between px-[16px]"
         >
           Vise
           <img
             src="/images/arrow-down-white.png"
-            className={`w-[12px] h-[12px] ${
-              isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'
-            }`}
+            className={`w-[12px] h-[12px] 
+            ${isDropdownOpen ? 'rotate-180 duration-200' : 'rotate-0 duration-200'}`
+            }
           ></img>
         </div>
       )}
@@ -75,9 +75,8 @@ const SportskoKladjenjeMobileSubNav: FC = () => {
               key={route.label}
               onClick={() => handleSelectedDate(route.label)}
               className={({ isActive }) =>
-                `${
-                  isActive ? 'bg-[#525558]' : ''
-                } bg-[#2c2e30] px-[16px] capitalize flex items-center w-[100px] h-[46px] border-b-[1px] border-[#525558]`
+                `${isActive ? 'bg-[#525558]' : ''} 
+                bg-[#2c2e30] px-[16px] capitalize flex items-center w-[100px] h-[46px] border-b-[1px] border-[#525558]`
               }
             >
               <p>{route.label}</p>

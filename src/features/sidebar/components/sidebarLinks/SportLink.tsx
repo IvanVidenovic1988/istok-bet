@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Sport } from '../../types'
+import { ROUTES } from '../../../../shared/routes'
+import { closeAllMarketsForSingleEvent } from '../../../events/redux/singleEvent'
+import { useAppDispatch } from '../../../../shared/redux/hooks'
 
 type Props = {
   sport: Sport
@@ -10,9 +13,12 @@ type Props = {
 
 const SportLink = ({ sport, toggleSidebarMenu, activeSportId }: Props) => {
 
+  const dispatch = useAppDispatch()
+
   return (
     <NavLink
-      to={`${sport.id}-${sport.name}`}
+      onClick={() => dispatch(closeAllMarketsForSingleEvent())}
+      to={`${ROUTES.sportskoKladjenje}/${ROUTES.sve}/${sport.id}-${sport.name}`}
       className={({ isActive }) =>
         `${isActive
           ? 'border-l-[8px] border-l-[#ffc107]'

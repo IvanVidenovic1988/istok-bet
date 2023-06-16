@@ -5,10 +5,10 @@ import DesktopSidebar from './DesktopSidebar'
 const Sidebar = () => {
   return (
     <>
-      <div className="lg:hidden">
+      <div className="absolute lg:hidden">
         <MobileSidebar />
       </div>
-      <div className="hidden lg:block">
+      <div className="absolute hidden lg:block">
         <DesktopSidebar />
       </div>
     </>

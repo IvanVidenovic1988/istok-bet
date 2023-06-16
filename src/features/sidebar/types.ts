@@ -45,7 +45,7 @@ type MarketOutcome = {
   shortName: string
 }
 
-type Market = {
+export type SportMarket = {
   collapsed: boolean
   description: string
   displayModeType: number
@@ -65,7 +65,7 @@ export type Sport = {
   id: number
   categories: Categories
   iconCode: string
-  markets: { [id: number]: Market }
+  markets: { [id: number]: SportMarket }
   name: string
   numberOfEvents: number
   position: number

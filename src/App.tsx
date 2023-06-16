@@ -8,28 +8,40 @@ import Sve from './pages/SportskoKladjenje/Sve'
 import Sidebar from './features/sidebar/components/Sidebar'
 import { SUBNAV_ROUTES } from './features/navigation/routes'
 import Events from './features/events/components/Events'
+import Ticket from './features/ticket/components/Ticket'
+
+
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Topbar />
-        <Navbar />
-        <Sidebar />
+        <div className='fixed z-40 w-full bg-[#1a1c1d]'>
+          <Topbar />
+          <Navbar />
+          <Sidebar />
+        </div>
+        <div className='absolute top-[125px] right-0 w-[305px]'>
+          <Ticket />
+        </div>
 
         <Routes>
-          <Route path={':sportSlug'} element={<Events />} />
-          <Route path={':sportSlug/:categorySlug'} element={<Events />} />
-          <Route path={':sportSlug/:categorySlug/:tournamentSlug'} element={<Events />} />
+          <Route path={`${ROUTES.sportskoKladjenje}/${ROUTES.sve}/:sportSlug`} element={<Events />} />
+          <Route path={`${ROUTES.sportskoKladjenje}/${ROUTES.sve}/:sportSlug/:categorySlug`} element={<Events />} />
+          <Route path={`${ROUTES.sportskoKladjenje}/${ROUTES.sve}/:sportSlug/:categorySlug/:tournamentSlug`} element={<Events />} />
 
-          <Route path={ROUTES.sportskoKladjenje}>
-            <Route index element={<Navigate to={ROUTES.sve} />} />
+          <Route path={ROUTES.home}>
+            <Route index element={<Navigate to={ROUTES.sportskoKladjenje} />} />
 
-            <Route path={ROUTES.sve} element={<Sve />} />
+            <Route path={ROUTES.sportskoKladjenje}>
+              <Route index element={<Navigate to={`${ROUTES.sve}/24-Rukomet`} />} />
 
-            {SUBNAV_ROUTES.map(({ label, link, Element }) => (
-              <Route key={label} path={link} element={<Element />} />
-            ))}
+              {/* <Route path={`${ROUTES.sve}/21-Hokej`} element={<Sve />} /> */}
+
+              {SUBNAV_ROUTES.map(({ label, link, Element }) => (
+                <Route key={label} path={link} element={<Element />} />
+              ))}
+            </Route>
           </Route>
 
           <Route path={ROUTES.kladjenjeUzivo}>
