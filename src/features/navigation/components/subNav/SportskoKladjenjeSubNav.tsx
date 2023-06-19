@@ -70,7 +70,6 @@ const SubNav: FC = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

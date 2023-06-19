@@ -103,9 +103,7 @@ const SingleEventAllMarkets: FC<Props> = ({ handleAddToTicket, closeModal }) => 
                             </div>
                         </div>
                     )}
-
                 </div>
-
             </div>
         </>
     );

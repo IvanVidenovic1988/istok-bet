@@ -31,27 +31,25 @@ const ColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, header
         return sortedAndFilteredVisibleMarkets
     }
 
-    const kita = getEventsVisibleMarkets(Object.values(event.markets), columnMarkets)
-    console.log('kita: ', kita);
+    const visibleMarkets = getEventsVisibleMarkets(Object.values(event.markets), columnMarkets)
 
     return (
         <>
             {Object.values(headerColumns).map(column => {
-                const market = kita.find(k => k.marketId === column)
-                console.log('market: ', market);
+                const isColumnMarketExist = visibleMarkets.find(visibleMarket => visibleMarket.marketId === column)
 
-                if (!market) return <div className='w-[33%] flex items-center justify-around px-4'>-</div>
+                if (!isColumnMarketExist) return <div className='w-[33%] flex items-center justify-around px-4'>-</div>
 
                 return (
-                    <div key={market.id} className='w-[33%] flex items-center justify-around px-4'>
-                        {Object.values(market.outcomes).map(outcome => (
+                    <div key={isColumnMarketExist.id} className='w-[33%] flex items-center justify-around px-4'>
+                        {Object.values(isColumnMarketExist.outcomes).map(outcome => (
                             <div
                                 key={outcome.id}
                                 onClick={() => handleAddToTicket({
                                     id: event.id,
                                     name: event.name,
-                                    marketsName: market.name,
-                                    marketsSpecialValue: market.specialValues,
+                                    marketsName: isColumnMarketExist.name,
+                                    marketsSpecialValue: isColumnMarketExist.specialValues,
                                     tip: outcome.name,
                                     odd: outcome.odd,
                                     outcomeId: outcome.id
@@ -59,22 +57,17 @@ const ColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, header
                                 className={`w-full h-[39px] flex items-center justify-around 
                                 ${activeOutcomeId.includes(outcome.id) ? "bg-[#ffc107] border-r border-black text-black font-semibold" : "hover:bg-[#545657]"}`}
                             >
-                                {/* <span>{market.specialValues}</span> */}
                                 <span
                                     onClick={() => dispatch(getActiveOutcomeId(outcome.id))}
                                     className='w-full h-full cursor-pointer flex-center'
                                 >
                                     {outcome.odd < 1 ? "-" : outcome.odd}
                                 </span>
-
-
                             </div>
                         ))}
-
                     </div>
                 )
             })}
-
         </>
     )
 }

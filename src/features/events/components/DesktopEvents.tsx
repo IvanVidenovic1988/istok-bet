@@ -8,7 +8,7 @@ import ColumnHeader from './ColumnHeader/ColumnHeader';
 import CompetitorNameAndTime from './CompetitorNameAndTime/CompetitorNameAndTime';
 import ColumnOdds from './ColumnOdds/ColumnOdds';
 import SingleEventAllMarkets from './SingleEventAllMarkets';
-import { SingleEvent, setAllMarketsForSingleEvent, openAllMarketsForSingleEvent } from '../redux/singleEvent';
+import { SingleEvent, setAllMarketsForSingleEvent } from '../redux/singleEvent';
 
 
 const DesktopEvents = () => {
@@ -45,11 +45,8 @@ const DesktopEvents = () => {
         columnTwo: null,
         columnThree: null,
     });
-    console.log('headerColumns: ', headerColumns);
 
     const vizibleMarketsOnChange = useMemo(() => visibleMarkets.filter(vm => Object.values(headerColumns).includes(vm.id)), [visibleMarkets, headerColumns])
-    console.log('vizibleMarketsOnChange: ', vizibleMarketsOnChange);
-
 
     useEffect(() => {
         if (visibleMarkets.length) {
@@ -75,7 +72,7 @@ const DesktopEvents = () => {
     }
 
     const [activeMarketName, setActiveMarketName] = useState<string>('')
-    console.log('activeMarketName: ', activeMarketName);
+
     const openColumn = (leagueName: string, column: string) => {
         const name = leagueName + column
         setActiveMarketName((n) => n === name ? '' : name)
@@ -181,7 +178,6 @@ const DesktopEvents = () => {
                                                     handleAddToTicket={handleAddToTicket}
                                                     closeModal={() => { setAllMarketsOpen(null) }}
                                                 />
-
                                             }
                                         </div>
                                     ))}

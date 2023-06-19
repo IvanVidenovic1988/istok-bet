@@ -49,12 +49,10 @@ export const fetchEvents = createAsyncThunk(
       to: `${twoWeeksFromToday}T00:00:00`,
     }
 
-    // console.log('params: ', params)
     const nonMappedEvent = await request<EventsDataResponse>('events', {
       config: eventConfig,
       filters: eventfilters,
     })
-    // console.log('nonMappedEvent: ', nonMappedEvent)
     return nonMappedEvent
   },
 )

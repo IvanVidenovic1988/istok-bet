@@ -36,8 +36,6 @@ function App() {
             <Route path={ROUTES.sportskoKladjenje}>
               <Route index element={<Navigate to={`${ROUTES.sve}/24-Rukomet`} />} />
 
-              {/* <Route path={`${ROUTES.sve}/21-Hokej`} element={<Sve />} /> */}
-
               {SUBNAV_ROUTES.map(({ label, link, Element }) => (
                 <Route key={label} path={link} element={<Element />} />
               ))}

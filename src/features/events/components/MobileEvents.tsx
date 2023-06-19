@@ -46,11 +46,6 @@ const MobileEvents = () => {
         dispatch(fetchEvents({ sportId, categoryId, tournamentId }))
     }, [sportId, categoryId, tournamentId, dispatch])
 
-
-    // const prepareMarkets = (market: Market) => {
-    //     return Object.values(market.outcomes).map((outcome) => (outcome.odd)).join(' - ')
-    // }
-
     return (
         <div className='text-white ml-[50px] lg:ml-[300px] lg:mt-[40px]'>
 
@@ -69,7 +64,6 @@ const MobileEvents = () => {
                                     className='flex items-center justify-between px-4 text-center'
                                 >
                                     <span className='text-[14px] uppercase'>
-                                        {/* {(visibleMarket.name).split(' ')[0] + ' ' + (visibleMarket.name).split(' ')[1]} */}
                                         {visibleMarket.name}
                                     </span>
                                     <img
@@ -117,7 +111,6 @@ const MobileEvents = () => {
                                     <div className='w-[40%]'>
                                         {getEventsVisibleMarkets(Object.values(event.markets), visibleMarkets).map(market => (
                                             <div key={market.id} className='flex items-center justify-around'>
-                                                {/* <div>{prepareMarkets(market)}</div> */}
                                                 {Object.values(market.outcomes).map(outcome => (
                                                     <div
                                                         key={outcome.id}
@@ -136,18 +129,12 @@ const MobileEvents = () => {
                                                             className='cursor-pointer'
                                                         >{outcome.odd}</span>
                                                     </div>
-
                                                 ))}
-
                                             </div>
-
                                         ))}
-
                                     </div>
                                 </div>
-
                             ))}
-
                         </div>
                     ))}
                     </div>

@@ -20,7 +20,6 @@ const ColumnDropdown = ({
     }) => {
 
     const selectedMarket = markets.find(market => market.id === selectedColumnId)
-    console.log('selectedMarket: ', selectedMarket);
 
     return (
         <div className='relative w-full'>
