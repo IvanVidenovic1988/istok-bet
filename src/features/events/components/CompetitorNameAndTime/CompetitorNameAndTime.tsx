@@ -12,11 +12,11 @@ export const CompetitorNameAndTime: FC<Props> = ({ event }) => {
     }
 
     return (
-        <div className='w-[45%] flex items-center pl-3'>
+        <div className='w-[35%] md:w-[55%] lg:w-[45%] flex lg:items-center flex-col md:flex-row pl-3'>
             <div className='text-[14px] text-[#acacad]'>
                 {event.startsAt.slice(11, 16)}
             </div>
-            <div className='pl-3 text-[14px]'>
+            <div className='md:pl-3 text-[14px] '>
                 {prepareCompetitors(event)}
             </div>
         </div>

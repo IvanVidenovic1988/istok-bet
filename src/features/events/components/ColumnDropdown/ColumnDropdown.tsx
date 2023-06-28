@@ -23,19 +23,21 @@ const ColumnDropdown = ({
 
     return (
         <div className='relative w-full'>
-            <div className='flex-center text-center relative hover:bg-[#272a2b]'>
+            <div className='flex items-center justify-evenly text-center hover:bg-[#272a2b]'>
                 {selectedMarket &&
                     <div
                         key={selectedMarket.id}
                         onClick={selectedColumDropdown}
-                        className='w-[70%] h-[40px] flex-center hover:bg-[#272a2b] leading-4 cursor-pointer'>
+                        className='w-[80%] lg:w-[70%] h-[60px] md:h-[40px] flex-center hover:bg-[#272a2b] leading-4 cursor-pointer'>
                         <span className='text-[14px]'>{selectedMarket.name}</span>
                     </div>
                 }
-                <img
-                    src="/images/arrow-down-white.png"
-                    className='w-[8px] h-[8px] absolute top-[16px] left-[190px]'
-                ></img>
+                <div>
+                    <img
+                        src="/images/arrow-down-white.png"
+                        className='w-[8px] h-[8px]'
+                    ></img>
+                </div>
             </div>
 
             {markets.map((market) => (
@@ -43,7 +45,7 @@ const ColumnDropdown = ({
                     key={market.id}
                     onClick={selectedColumDropdown}
                     className={`w-full py-6 absolute top-[40px] left-0
-                        bg-[#1a1c1d] cursor-pointer z-50 ${isOpen
+                        bg-[#1a1c1d] cursor-pointer z-40 ${isOpen
                             ? ''
                             : 'hidden'
                         } `}

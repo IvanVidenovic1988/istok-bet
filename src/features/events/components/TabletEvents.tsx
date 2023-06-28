@@ -9,6 +9,7 @@ import CompetitorNameAndTime from './CompetitorNameAndTime/CompetitorNameAndTime
 import DesktopColumnOdds from './ColumnOdds/DesktopColumnOdds';
 import SingleEventAllMarkets from './SingleEventAllMarkets';
 import { SingleEvent, setAllMarketsForSingleEvent } from '../redux/singleEvent';
+import TabletColumnOdds from './ColumnOdds/TabletColumnOdds';
 
 
 const DesktopEvents = () => {
@@ -34,16 +35,13 @@ const DesktopEvents = () => {
 
     const visibleMarketsColumnOne = visibleMarkets.slice(0, 5)
     const visibleMarketsColumnTwo = visibleMarkets.slice(5, 10)
-    const visibleMarketsColumnThree = visibleMarkets.slice(10, 15)
 
     const [headerColumns, setHeaderColumns] = useState<{
         columnOne: number | null;
         columnTwo: number | null;
-        columnThree: number | null;
     }>({
         columnOne: null,
         columnTwo: null,
-        columnThree: null,
     });
 
     const vizibleMarketsOnChange = useMemo(() => visibleMarkets.filter(vm => Object.values(headerColumns).includes(vm.id)), [visibleMarkets, headerColumns])
@@ -53,7 +51,6 @@ const DesktopEvents = () => {
             setHeaderColumns({
                 columnOne: visibleMarketsColumnOne[0].id,
                 columnTwo: visibleMarketsColumnTwo[0].id,
-                columnThree: visibleMarketsColumnThree[0].id,
             })
         }
     }, [visibleMarkets.length])
@@ -91,31 +88,24 @@ const DesktopEvents = () => {
     const handleAllMarketsForSingleEvent = (event: SingleEvent) => {
         dispatch(setAllMarketsForSingleEvent(event))
         openAllMarketsModal(event.id)
-        setActiveMarketName("close")
+        setActiveMarketName("zatvori")
     }
-
-    const kita = events && Object.entries(events).map(([leagueName, eventsByDate]) => (
-        Object.entries(eventsByDate).map(([date, events]) => (
-            events.map(event => (event.id))
-        ))
-    ))
-    console.log('kita: ', kita);
 
 
     return (
-        <div className='w-[calc(100%-250px)] text-white ml-[50px] lg:ml-[250px]'>
+        <div className='text-white ml-[55px] lg:ml-[250px]'>
             {events && Object.entries(events).map(([leagueName, eventsByDate]) => (
                 <div
                     key={leagueName}
-                    className='w-[calc(100%-320px)] mb-[14px]'
+                    className='xl:w-[calc(100%-305px)] mb-[14px]'
                 >
-                    <div className='h-[40px] flex items-center '>
+                    <div className='h-[40px] flex items-center justify-between pr-[7%]'>
 
-                        <div className='w-[45%] pl-3 text-[18px] font-semibold'>
+                        <div className='w-[43%] pl-3 text-[18px] font-semibold'>
                             {leagueName}
                         </div>
 
-                        <div className='w-[56%] flex justify-between pr-[4%] pb-[2px]'>
+                        <div className='w-[50%] flex justify-between pb-[2px]'>
                             <ColumnDropdown
                                 name='columnOne'
                                 markets={visibleMarketsColumnOne}
@@ -132,14 +122,6 @@ const DesktopEvents = () => {
                                 selectedColumDropdown={() => openColumn(leagueName, 'columnTwo')}
                                 isOpen={activeMarketName === leagueName + 'columnTwo'}
                             />
-                            <ColumnDropdown
-                                name='columnThree'
-                                markets={visibleMarketsColumnThree}
-                                selectHeaderColumns={selectHeaderColumns}
-                                selectedColumnId={headerColumns.columnThree}
-                                selectedColumDropdown={() => openColumn(leagueName, 'columnThree')}
-                                isOpen={activeMarketName === leagueName + 'columnThree'}
-                            />
                         </div>
                     </div>
                     <div>
@@ -153,13 +135,13 @@ const DesktopEvents = () => {
                                     {events.map(event => (
                                         <div
                                             key={event.id}
-                                            className='w-full bg-[#242628] h-[40px] flex items-center justify-between border-b-[1px] border-[#1a1c1d] hover:bg-[#37383d] rounded'
+                                            className=' bg-[#242628] h-[40px] flex items-center justify-between border-b-[1px] border-[#1a1c1d] hover:bg-[#37383d] rounded'
                                         >
                                             <CompetitorNameAndTime
                                                 event={event}
                                             />
-                                            <div className='w-[53%] flex'>
-                                                <DesktopColumnOdds
+                                            <div className='w-[57%] lg:w-[48%] 2xl:w-[51%] flex'>
+                                                <TabletColumnOdds
                                                     event={event}
                                                     handleAddToTicket={handleAddToTicket}
                                                     columnMarkets={vizibleMarketsOnChange}
@@ -175,11 +157,12 @@ const DesktopEvents = () => {
                                                 startsAt: event.startsAt,
                                                 markets: event.markets
                                             })}
-                                                className='w-[4%] h-[40px] flex-center cursor-pointer hover:bg-[#4f5157]'>
+                                                className='w-[7%] h-[40px] flex-center cursor-pointer hover:bg-[#4f5157]'>
                                                 <span className='text-[14px] text-[#ffc107] font-bold'>+{event.totalMarkets}</span>
-                                            </div>
 
+                                            </div>
                                             {allMarketsOpen === event.id &&
+
                                                 <SingleEventAllMarkets
                                                     handleAddToTicket={handleAddToTicket}
                                                     closeModal={() => { setAllMarketsOpen(null) }}

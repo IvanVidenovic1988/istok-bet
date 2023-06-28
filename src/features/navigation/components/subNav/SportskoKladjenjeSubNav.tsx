@@ -58,7 +58,7 @@ const SubNav: FC = () => {
 
             <div
               onClick={() => dispatch(toggleTicket())}
-              className='w-[88px] bg-[#525455] flex-center cursor-pointer lg:hidden'
+              className='w-[88px] bg-[#525455] flex-center cursor-pointer xl:hidden'
             >
               <span className='text-white'>Tiket</span>
               <span className='w-[18px] h-[18px] flex-center ml-1 text-[12px] text-[white] font-bold bg-[#ffc107] rounded-sm'>

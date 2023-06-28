@@ -4,6 +4,7 @@ import { Category, Sport } from '../../types'
 import { ROUTES } from '../../../../shared/routes'
 import { useAppDispatch } from '../../../../shared/redux/hooks'
 import { closeAllMarketsForSingleEvent } from '../../../events/redux/singleEvent'
+import { hideSidebar } from '../../redux/sidebar'
 
 type Props = {
   sport: Sport
@@ -30,7 +31,10 @@ const CategoryLink = ({ sport, category, toggleSidebarMenu, activeSportId }: Pro
         } group hover:bg-[#2f2f2f] pl-5 pr-6 h-[30px] flex items-center justify-between text-[14px] text-[#e6e6e6]`
       }
     >
-      <span className="max-w-[85px] overflow-hidden whitespace-nowrap">
+      <span
+        onClick={() => dispatch(hideSidebar())}
+        className="w-full pl-1 overflow-hidden whitespace-nowrap"
+      >
         {category.name}
       </span>
       <div className="flex items-center">

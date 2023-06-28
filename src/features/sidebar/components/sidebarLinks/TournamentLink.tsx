@@ -4,6 +4,7 @@ import { Category, Sport, Tournament } from '../../types'
 import { ROUTES } from '../../../../shared/routes'
 import { closeAllMarketsForSingleEvent } from '../../../events/redux/singleEvent'
 import { useAppDispatch } from '../../../../shared/redux/hooks'
+import { hideSidebar } from '../../redux/sidebar'
 
 type Props = {
   sport: Sport
@@ -30,7 +31,10 @@ const TournamentLink = ({ sport, category, tournament }: Props) => {
         } group hover:bg-[#2f2f2f] pl-7 pr-6 h-[30px] flex items-center justify-between text-[14px] text-[#aeaeae]`
       }
     >
-      <span className="max-w-[90px] overflow-hidden whitespace-nowrap">
+      <span
+        onClick={() => dispatch(hideSidebar())}
+        className="w-full pl-2 overflow-hidden whitespace-nowrap"
+      >
         {tournament.name}
       </span>
       <span className="pr-[15px]  text-[12px]">{tournament.numberOfEvents}</span>

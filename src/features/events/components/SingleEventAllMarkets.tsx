@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../shared/redux/hooks';
-import { SingleEvent, closeAllMarketsForSingleEvent } from '../redux/singleEvent';
+import { SingleEvent } from '../redux/singleEvent';
 import { TicketItem } from '../../ticket/redux/ticket';
 import { getActiveOutcomeId } from '../redux/events';
 import { filterButtons } from '../utils/utils';
@@ -15,20 +15,20 @@ const SingleEventAllMarkets: FC<Props> = ({ handleAddToTicket, closeModal }) => 
     const dispatch = useAppDispatch();
     const singleEvent = useAppSelector((state) => state.singleEventData.singleEvent)
 
-    const [selectedMarket, setSelectedMarket] = useState('all')
+    const [selectedMarketFilter, setSelectedMarketFilter] = useState('all')
 
     if (!singleEvent) return null;
 
     const filterMarkets = (e: any) => {
 
         const clickedFilter = e.target.value
-        setSelectedMarket(clickedFilter)
+        setSelectedMarketFilter(clickedFilter)
     }
 
 
     const filteredMarkets = Object.values(singleEvent.markets).filter(
-        (market) => market.name.includes(selectedMarket))
-    const markets = selectedMarket === 'all' ? Object.values(singleEvent?.markets) : filteredMarkets
+        (market) => market.name.includes(selectedMarketFilter))
+    const markets = selectedMarketFilter === 'all' ? Object.values(singleEvent?.markets) : filteredMarkets
 
     const activeOutcomeId = useAppSelector((state) => state.eventsData.activeOutcomeId)
 
@@ -39,13 +39,13 @@ const SingleEventAllMarkets: FC<Props> = ({ handleAddToTicket, closeModal }) => 
 
     return (
         <>
-            <div className='w-[46%] fixed top-[180px] right-[320px] z-50'>
+            <div className='w-[85%] md:w-[70%] lg:w-[60%] fixed top-[180px] right-[8px] xl:right-[312px] 2xl:right-[320px] z-50'>
 
                 <div className='p-6 text-center bg-[#242628]'>
                     <div className='text-[24px]'>{singleEvent && prepareCompetitors(singleEvent)}</div>
                     <div>{singleEvent.tournamentName}</div>
                     <div>{singleEvent.date} - {singleEvent.startsAt.slice(11, 16)}</div>
-                    <div onClick={closeModal} className='absolute top-[-14px] right-[14px] text-[50px] cursor-pointer'>x</div>
+                    <div onClick={closeModal} className='absolute top-0 right-[15px] text-[30px] cursor-pointer'>x</div>
                 </div>
 
                 <div className='sticky flex items-center justify-around w-full text-center bg-[#2c2e30]  border-t border-b border-[#3f4144]'>
@@ -53,11 +53,11 @@ const SingleEventAllMarkets: FC<Props> = ({ handleAddToTicket, closeModal }) => 
                         <div
                             key={button.label}
                             onClick={filterMarkets}
-                            className='h-[40px] flex-center grow hover:bg-[#545657] cursor-pointer'
+                            className='h-[40px] flex-center grow hover:bg-[#ffbb1a] hover:text-[black] cursor-pointer'
                         >
                             <button
                                 value={button.value}
-                                className=''
+                                className='h-[40px] overflow-hidden'
                             >
                                 {button.label}
                             </button>

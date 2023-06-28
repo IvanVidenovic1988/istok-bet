@@ -16,7 +16,7 @@ type Props = {
     }
 }
 
-const ColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, headerColumns }) => {
+const DesktopColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, headerColumns }) => {
     const activeOutcomeId = useAppSelector((state) => state.eventsData.activeOutcomeId)
     const dispatch = useAppDispatch()
 
@@ -38,10 +38,10 @@ const ColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, header
             {Object.values(headerColumns).map(column => {
                 const isColumnMarketExist = visibleMarkets.find(visibleMarket => visibleMarket.marketId === column)
 
-                if (!isColumnMarketExist) return <div className='w-[33%] flex items-center justify-around px-4'>-</div>
+                if (!isColumnMarketExist) return <div className='w-[34%] flex items-center justify-around px-4'>-</div>
 
                 return (
-                    <div key={isColumnMarketExist.id} className='w-[33%] flex items-center justify-around px-4'>
+                    <div key={isColumnMarketExist.id} className='w-[34%] flex items-center justify-around px-4'>
                         {Object.values(isColumnMarketExist.outcomes).map(outcome => (
                             <div
                                 key={outcome.id}
@@ -72,4 +72,4 @@ const ColumnOdds: FC<Props> = ({ event, columnMarkets, handleAddToTicket, header
     )
 }
 
-export default ColumnOdds
+export default DesktopColumnOdds

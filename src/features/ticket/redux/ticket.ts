@@ -17,7 +17,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   ticketItems: {},
-  isTicketOpen: true,
+  isTicketOpen: false,
 }
 
 const ticketSlice = createSlice({

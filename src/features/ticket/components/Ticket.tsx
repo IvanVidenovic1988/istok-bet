@@ -5,10 +5,10 @@ import DesktopTicket from './DesktopTicket';
 const Ticket = () => {
     return (
         <>
-            <div className="lg:hidden">
+            <div className="xl:hidden">
                 <MobileTicket />
             </div>
-            <div className="hidden lg:block">
+            <div className="hidden xl:block ">
                 <DesktopTicket />
             </div>
         </>

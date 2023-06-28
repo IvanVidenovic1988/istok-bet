@@ -16,12 +16,12 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <div className='fixed z-40 w-full bg-[#1a1c1d]'>
+        <div className='fixed w-full bg-[#1a1c1d]'>
           <Topbar />
           <Navbar />
           <Sidebar />
         </div>
-        <div className='absolute top-[125px] right-0 w-[305px]'>
+        <div className='absolute top-[125px] right-0 w-[305px] z-10'>
           <Ticket />
         </div>
 
@@ -34,7 +34,7 @@ function App() {
             <Route index element={<Navigate to={ROUTES.sportskoKladjenje} />} />
 
             <Route path={ROUTES.sportskoKladjenje}>
-              <Route index element={<Navigate to={`${ROUTES.sve}/24-Rukomet`} />} />
+              <Route index element={<Navigate to={`${ROUTES.sve}/36-Košarka`} />} />
 
               {SUBNAV_ROUTES.map(({ label, link, Element }) => (
                 <Route key={label} path={link} element={<Element />} />
